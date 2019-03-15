@@ -1,18 +1,28 @@
-public class RangeMain {
-    public static void main(String[] args) throws InterruptedException {
-        int randomNumberInRange = (int) (Math.random() * 101);
+import java.util.ArrayList;
+import java.util.List;
 
-        try {
-            Number number = new Number(randomNumberInRange);
-            for (Integer next : number) {
-                System.out.println(next);
-                Thread.sleep(10);
-                System.gc();
-                main(new String[]{});
-            }
-        } catch (java.lang.StackOverflowError so) {
+public class RangeMain {
+    private static int randomNumber = (int) (Math.random() * 101);
+    private static List<Integer> randomNumberList = new ArrayList<>();
+
+    public static void main(String[] args) throws InterruptedException {
+        randomNumberList.add(randomNumber);
+        printRandomNumber(randomNumberList);
+    }
+
+    private static void printRandomNumber(List<Integer> randomNumber) throws InterruptedException {
+        for (Integer next : randomNumber) {
+            System.out.println(next);
             System.gc();
-            so.printStackTrace();
+            Thread.sleep(10);
+            addRandomNumber(randomNumber);
         }
+    }
+
+    private static void addRandomNumber(List<Integer> randomNumberList) throws InterruptedException {
+        randomNumberList.clear();
+        randomNumber = (int) (Math.random() * 101);
+        randomNumberList.add(randomNumber);
+        printRandomNumber(randomNumberList);
     }
 }
