@@ -7,7 +7,7 @@ public class RangeMain {
     private static void forEach() {
         Range range = new Range();
         for (Integer ignored : range) {
-            System.out.println((int) (Math.random() * 101 + 1));
+            System.out.println((int) (Math.random() * 101));
         }
         System.gc();
         forEach();
