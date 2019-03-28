@@ -1,17 +1,15 @@
 import java.util.Iterator;
-import java.util.stream.IntStream;
+import java.util.Random;
 
-class Range implements Iterable<Integer> {
-    private int start;
-    private int end;
-
-    Range() {
-        this.start = Integer.MIN_VALUE;
-        this.end = Integer.MAX_VALUE;
+public class Range implements Iterable<Integer> {
+    private int startNumber;
+    private int endNumber;
+    Range(int startNumber, int endNumber) {
+        this.startNumber = startNumber;
+        this.endNumber = endNumber;
     }
-
     @Override
     public Iterator<Integer> iterator() {
-        return IntStream.rangeClosed(start, end).iterator();
+        return new Random().ints(startNumber, endNumber).iterator();
     }
 }
